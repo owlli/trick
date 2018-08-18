@@ -91,7 +91,7 @@ int main(int argc, char const *argv[]) {
     }
 
     printf("sh_cmd_val.num=%d\n", sh_cmd_val.num);
-    pristf("sh_cmd_val.cmd=%s\n", sh_cmd_val.cmd);
+    printf("sh_cmd_val.cmd=%s\n", sh_cmd_val.cmd);
     printf("sh_cmd_val.opt=%s\n", sh_cmd_val.opt);
     printf("sh_cmd_val.arg=%s\n", sh_cmd_val.arg);
     /*
