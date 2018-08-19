@@ -1,0 +1,10 @@
+[Unit]
+Description=Trick
+
+[Service]
+Type=forking
+ExecStart=/home/lzh/Desktop/trick/server_main
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
