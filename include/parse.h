@@ -2,7 +2,7 @@
 #define PARSE_H__
 
 
-int parse_sh_cmd(struct sh_cmd *sh_cmd_p, const char *string);
+int parse_sh_cmd(struct c_data *c_data_p, const char *string);
 
 
 

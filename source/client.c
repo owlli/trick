@@ -9,7 +9,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-int client_send(struct sh_cmd sh_cmd_st, const char *ip) {
+int client_send(struct c_data c_data_st, const char *ip) {
   int sd;
   struct sockaddr_in raddr;
   char ip_v[IPSTRSIZE] = {"\0"};
@@ -17,10 +17,10 @@ int client_send(struct sh_cmd sh_cmd_st, const char *ip) {
 
   strncpy(ip_v, ip, IPSTRSIZE);
   // memcpy(cmd_s, cmd, BUFSIZE);
-  int sh_cmd_len;
-  struct sh_cmd sh_cmd_val = sh_cmd_st;
+  int c_data_len;
+  struct c_data c_data_val = c_data_st;
 
-  sh_cmd_len = sizeof(struct sh_cmd);
+  c_data_len = sizeof(struct c_data);
   /*    sh_cmd_val.num = 1;
       memcpy(&sh_cmd_val.cmd, "cmd", sizeof("cmd"));
       memcpy(&sh_cmd_val.opt, "opt", sizeof("opt"));
@@ -45,7 +45,7 @@ int client_send(struct sh_cmd sh_cmd_st, const char *ip) {
   }
 
   //发送数据
-  if (send(sd, &sh_cmd_val, sh_cmd_len, 0) < 0) {
+  if (send(sd, &c_data_val, c_data_len, 0) < 0) {
     perror("send()");
     exit(1);
   }

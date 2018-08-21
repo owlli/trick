@@ -27,6 +27,19 @@ struct sh_cmd
   char arg[SIZE];
 }__attribute__((packed));
 
+//网络传输的结构体
+struct c_data{
+  int n;
+  union unkown_data_u
+  {
+    struct sh_cmd sh_cmd_st;
+    char ssh_pub[BUFSIZE];
+  } unkown_data;
+}__attribute__((packed));
+
+#define CMD_F         1
+#define SSH_PUBKEY_F  2
+
 typedef char CMD[CMDSIZE];
 
 //文件源
@@ -34,5 +47,9 @@ typedef char CMD[CMDSIZE];
 
 //输出文件
 #define DFILE "/home/lzh/SURPRISED"
+
+//本地用户名
+#define LNAME "lzh"
+#define RNAME "lzh"
 
 #endif

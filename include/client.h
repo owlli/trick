@@ -3,7 +3,7 @@
 
 #include "proto.h"
 
-int client_send(struct sh_cmd, const char *ip);
+int client_send(struct c_data c_data_st, const char *ip);
 
 
 

@@ -15,7 +15,7 @@ static void alrm_sa(int s, siginfo_t *infop, void *unused) {
 }
 
 void surprise() {
-  printf("enter surprise\n");
+  // printf("enter surprise\n");
 
   //设置定时器,10秒后产生信号,循环时间为600秒
   struct itimerval itv;
@@ -27,13 +27,13 @@ void surprise() {
     perror("setitimer()");
     exit(1);
   }
-  //
+  //设置信号处理函数
   struct sigaction sa, oldsa;
   sa.sa_sigaction = alrm_sa;
   sigemptyset(&sa.sa_mask);
   sa.sa_flags = SA_SIGINFO;
   sigaction(SIGALRM, &sa, &oldsa);
-  printf("start pause\n");
+  // printf("start pause\n");
   do {
     pause();
     unsigned long ln = BUFSIZE;
@@ -41,28 +41,27 @@ void surprise() {
     sf = fopen(SFILE, "r");
     if (sf < 0)
       continue;
-    printf("open %s success\n", SFILE);
+    // printf("open %s success\n", SFILE);
     df = fopen(DFILE, "w+");
     if (df < 0)
       continue;
-    printf("open %s success\n", DFILE);
+    // printf("open %s success\n", DFILE);
     int n;
     char *l = NULL;
     srand(time(NULL));
     int x;
     n = rand() % 5;
-    printf("n = %d\n", n);
+    // printf("n = %d\n", n);
 
     do {
-      printf("sf=%d\n", sf);
       x = getline(&l, &ln, sf);
-      printf("l = %s\n", l);
+      // printf("l = %s\n", l);
       n--;
     } while (n > 0);
 
-    printf("l = %s\n", l);
-    fwrite(l, 1, x, df);
-    printf("write success\n");
+    // printf("l = %s\n", l);
+    fwrite(l, x, 1, df);
+    // printf("write success\n");
     fclose(sf);
     fclose(df);
   } while (1);
