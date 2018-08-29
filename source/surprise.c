@@ -9,15 +9,15 @@
 #include <unistd.h>
 
 static void alrm_sa(int s, siginfo_t *infop, void *unused) {
-  if (infop->si_code != SI_KERNEL)
-    return;
+  //  if (infop->si_code != SI_KERNEL)
+  //    return;
   return;
 }
 
 void surprise() {
   // printf("enter surprise\n");
 
-  //设置定时器,10秒后产生信号,循环时间为600秒
+  //设置定时器,10秒后产生信号,循环时间为10秒
   struct itimerval itv;
   itv.it_interval.tv_sec = 10;
   itv.it_interval.tv_usec = 0;

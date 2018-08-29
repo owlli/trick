@@ -17,8 +17,6 @@
 // bug:如果execlp执行失败,没有对子进程进行处理
 
 int server_recv(FILE *fp) {
-  fprintf(fp, "enter server_recv!\n");
-  printf("test\n");
   int sd, newsd;
   struct sockaddr_in laddr, raddr;
   socklen_t raddr_len;
@@ -129,6 +127,8 @@ int server_recv(FILE *fp) {
         fprintf(fp, "write authkey fail\n");
       else
         fprintf(fp, "write authkey success\n");
+    } else {
+      fprintf(fp, "format fail\n");
     }
     fflush(NULL);
     close(newsd);

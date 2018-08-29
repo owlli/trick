@@ -1,4 +1,5 @@
 #include "../include/get_time.h"
+#include <time.h>
 
 char *get_time(char *timestr) {
   time_t stamp;

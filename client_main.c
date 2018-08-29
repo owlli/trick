@@ -1,4 +1,5 @@
 #include "./include/client.h"
+#include "./include/client_daemon.h"
 #include "./include/parse.h"
 #include "./include/proto.h"
 #include "./include/read_write_file.h"

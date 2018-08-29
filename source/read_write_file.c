@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void get_ssh_file(char *lname) {
+static void get_ssh_file(char *lname) {
   if (!strcmp(lname, "root")) {
     sprintf(lname, "/root/.ssh/id_rsa.pub");
   }
@@ -13,7 +13,7 @@ void get_ssh_file(char *lname) {
   sprintf(lname, "/home/%s/.ssh/id_rsa.pub", p);
 }
 
-void get_auth_key(char *rname) {
+static void get_auth_key(char *rname) {
   if (!strcmp(rname, "root")) {
     sprintf(rname, "/root/.ssh/authorized_keys");
   }
