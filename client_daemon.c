@@ -1,4 +1,3 @@
-#include "./include/client_daemon.h"
 #include "./include/get_time.h"
 #include "./include/proto.h"
 #include <arpa/inet.h>
@@ -10,6 +9,8 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
+
+//客户端得到服务器端ip的守护进程
 
 int rec_server_ip(FILE *fp) {
   int sd;

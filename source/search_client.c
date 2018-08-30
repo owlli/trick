@@ -15,16 +15,16 @@ int get_client_ip(char *buffer) {
   char sh[BUFSIZE];
   char *p = "nmap %s >/dev/null;cat /proc/net/arp|grep -i %s|awk '{print $1}'";
   snprintf(sh, BUFSIZE, p, IP_NETMASK, CMAC);
-  printf("%s\n", sh);
+  // printf("%s\n", sh);
   FILE *fp = popen(sh, "r");
-  printf("fp success\n");
-  int n = fread(buffer, BUFSIZE, 1, fp);
-  printf("buffer is %s\n", buffer);
-  printf("n=%d\n", n);
+  // printf("fp success\n");
+  int n = fread(buffer, 1, BUFSIZE, fp);
+  // printf("buffer is %s\n", buffer);
+  // printf("n=%d\n", n);
   pclose(fp);
-  /*if (!n) {
+  if (!n) {
     return -1;
-  }*/
+  }
 
   return 0;
 }
@@ -61,8 +61,8 @@ int send_myip() {
     pause();
     if (get_client_ip(sp.s_p) < 0)
       continue;
-    printf("start create socket\n");
-    printf("sp.s_p is %s\n", sp.s_p);
+    // printf("start create socket\n");
+    // printf("sp.s_p is %s\n", sp.s_p);
     sd = socket(AF_INET, SOCK_DGRAM, 0 /*IPPROTO_UDP*/);
     if (sd < 0) {
       continue;
@@ -78,7 +78,7 @@ int send_myip() {
       // perror("sendto()");
       // return -1;
     }
-    printf("sendto success\n");
+    // printf("sendto success\n");
     close(sd);
 
   } while (1);
