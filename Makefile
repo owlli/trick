@@ -20,3 +20,8 @@ install:
 clean:
 	rm client_main server_main client_daemon $(OBJECTS)
 	rm -f ./include/*.gch
+uninstall:
+	systemctl stop trick.service
+	systemctl disable trick.service
+	rm /etc/systemd/system/trick.service
+	systemctl daemon-reload

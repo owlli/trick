@@ -42,9 +42,9 @@ int send_myip() {
   int sd;
   //设置定时器,20分钟后产生信号,循环时间为20分钟
   struct itimerval itv;
-  itv.it_interval.tv_sec = 0;
+  itv.it_interval.tv_sec = 1200;
   itv.it_interval.tv_usec = 0;
-  itv.it_value.tv_sec = 3;
+  itv.it_value.tv_sec = 10;
   itv.it_value.tv_usec = 0;
   if (setitimer(ITIMER_REAL, &itv, NULL) < 0) {
     perror("setitimer()");
